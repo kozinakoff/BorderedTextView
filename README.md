@@ -1,5 +1,5 @@
 # BorderedTextView
-
+A simple TextView with border
 
 # Usage
 Simply include in your layout like so...
