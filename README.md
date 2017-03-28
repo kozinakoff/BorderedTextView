@@ -1,6 +1,8 @@
 # BorderedTextView
 A simple TextView with border
 
+![screenshot](screenshot.png)
+
 # Usage
 Simply include in your layout like so...
 
