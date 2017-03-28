@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ru.nextexit.borderedtextview.BorderedTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Hello World!"
+        app:borderRadius="4dp"
+        app:borderWidth="1dp"
+        app:borderPadding="6dp"
+        app:borderColor="@color/colorPrimaryDark"/>
+
+    <ru.nextexit.borderedtextview.BorderedTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:text="How are you?"
+        android:layout_marginTop="6dp"
+        app:borderRadius="4dp"
+        app:borderWidth="1dp"
+        app:borderPaddingLeft="4dp"
+        app:borderPaddingRight="4dp"
+        app:backgroundColor="@color/colorPrimary"
+        app:borderColor="@color/colorAccent"/>
+
+</LinearLayout>
