@@ -3,6 +3,7 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion rootProject.targetSdk
     buildToolsVersion rootProject.buildToolsVersion
+    project.ext.libraryName = project.properties['POM_NAME']
 
     defaultConfig {
         minSdkVersion rootProject.minSdk
@@ -14,6 +15,15 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    libraryVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.aar')) {
+                def fileName = libraryName + '-' + defaultConfig.versionName + '.aar'
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
         }
     }
 }
