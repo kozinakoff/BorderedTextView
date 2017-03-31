@@ -3,6 +3,27 @@ A simple TextView with border
 
 ![screenshot](screenshot.png)
 
+[![](https://jitpack.io/v/kozinakoff/BorderedTextView.svg)](https://jitpack.io/#kozinakoff/BorderedTextView)
+
+# Install
+To add this library to your project, you must add the JitPack repo to your root build.gradle file...
+
+```groovy
+allprojects {
+ repositories {
+    ...
+    maven { url "https://jitpack.io" }
+ }
+}
+```
+
+Then include this line in your dependencies block...
+
+```
+compile 'com.github.kozinakoff:BorderedTextView:0.1.1'
+```
+
+
 # Usage
 Simply include in your layout like so...
 
