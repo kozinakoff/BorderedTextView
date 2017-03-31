@@ -19,11 +19,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-ext {
-    minSdk = 10
-    targetSdk = 25
-
-    buildToolsVersion = '25.0.2'
-    supportVersion = '25.3.0'
-}

@@ -4,31 +4,15 @@ apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.kozinakoff'
 
 android {
-    compileSdkVersion rootProject.targetSdk
-    buildToolsVersion rootProject.buildToolsVersion
-    project.ext.libraryName = project.properties['POM_NAME']
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
-        minSdkVersion rootProject.minSdk
-        targetSdkVersion rootProject.targetSdk
-        versionCode project.properties['VERSION_CODE'].toInteger()
-        versionName project.properties['VERSION_NAME']
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    libraryVariants.all { variant ->
-        variant.outputs.each { output ->
-            def outputFile = output.outputFile
-            if (outputFile != null && outputFile.name.endsWith('.aar')) {
-                def fileName = libraryName + '-' + defaultConfig.versionName + '.aar'
-                output.outputFile = new File(outputFile.parent, fileName)
-            }
-        }
+        minSdkVersion 10
+        targetSdkVersion 25
     }
 }
 
-dependencies {}
+dependencies {
+
+}
