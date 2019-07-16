@@ -20,7 +20,7 @@ allprojects {
 Then include this line in your dependencies block...
 
 ```
-compile 'com.github.kozinakoff:BorderedTextView:0.1.2'
+implementation 'com.github.kozinakoff:BorderedTextView:0.1.2'
 ```
 
 
