@@ -1,6 +1,13 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+repositories {
+    google()
+    maven { url "https://jitpack.io" }
+}
 
 group='ru.kozinakoff'
+version = '1.0.0'
 
 android {
     compileSdkVersion 28
