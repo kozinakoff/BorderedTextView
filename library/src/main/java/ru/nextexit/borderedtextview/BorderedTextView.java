@@ -8,6 +8,9 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
+import ru.kozinakoff.borderedtextview.R;
+
 public class BorderedTextView extends TextView {
 
     private final int MIN_WIDTH = 1;
@@ -38,7 +41,6 @@ public class BorderedTextView extends TextView {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        //DisplayMetrics dm = getResources().getDisplayMetrics();
 
         if (attrs != null) {
             TypedArray ta = context.getTheme().obtainStyledAttributes(
@@ -47,20 +49,20 @@ public class BorderedTextView extends TextView {
                     0, 0);
 
             try {
-                mBorderRadius = ta.getDimension(R.styleable.BorderedTextView_borderRadius, 0);
-                mBorderWidth = (int) ta.getDimension(R.styleable.BorderedTextView_borderWidth, MIN_WIDTH);
-                mBorderColor = ta.getColor(R.styleable.BorderedTextView_borderColor, 0);
-                mBackgroundColor = ta.getColor(R.styleable.BorderedTextView_backgroundColor, 0);
+                mBorderRadius = ta.getDimension(R.styleable.BorderedTextView_btv_borderRadius, 0);
+                mBorderWidth = (int) ta.getDimension(R.styleable.BorderedTextView_btv_borderWidth, MIN_WIDTH);
+                mBorderColor = ta.getColor(R.styleable.BorderedTextView_btv_borderColor, 0);
+                mBackgroundColor = ta.getColor(R.styleable.BorderedTextView_btv_backgroundColor, 0);
 
-                int borderPadding = (int) ta.getDimension(R.styleable.BorderedTextView_borderPadding, 0);
+                int borderPadding = (int) ta.getDimension(R.styleable.BorderedTextView_btv_borderPadding, 0);
 
                 if (borderPadding > 0) {
                     mBorderPaddingLeft = mBorderPaddingRight = mBorderPaddingTop = mBorderPaddingBottom = borderPadding;
                 } else {
-                    mBorderPaddingLeft = (int) ta.getDimension(R.styleable.BorderedTextView_borderPaddingLeft, 4);
-                    mBorderPaddingRight = (int) ta.getDimension(R.styleable.BorderedTextView_borderPaddingRight, 4);
-                    mBorderPaddingTop = (int) ta.getDimension(R.styleable.BorderedTextView_borderPaddingTop, 2);
-                    mBorderPaddingBottom = (int) ta.getDimension(R.styleable.BorderedTextView_borderPaddingBottom, 2);
+                    mBorderPaddingLeft = (int) ta.getDimension(R.styleable.BorderedTextView_btv_borderPaddingLeft, 4);
+                    mBorderPaddingRight = (int) ta.getDimension(R.styleable.BorderedTextView_btv_borderPaddingRight, 4);
+                    mBorderPaddingTop = (int) ta.getDimension(R.styleable.BorderedTextView_btv_borderPaddingTop, 2);
+                    mBorderPaddingBottom = (int) ta.getDimension(R.styleable.BorderedTextView_btv_borderPaddingBottom, 2);
                 }
             } finally {
                 ta.recycle();
@@ -83,13 +85,31 @@ public class BorderedTextView extends TextView {
         return shape;
     }
 
+    private Drawable getBackgroundDrawable(@ColorInt int colorResId) {
+        GradientDrawable shape = new GradientDrawable();
+        shape.setShape(GradientDrawable.RECTANGLE);
+        shape.setCornerRadius(mBorderRadius);
+        shape.setColor(colorResId);
+        shape.setStroke(mBorderWidth, mBorderColor);
+
+        return shape;
+    }
+
     /**
      * Sets the border radius on the label
      * @param borderRadius The radius of each border's corner
      */
     public void setBorderRadius(float borderRadius) {
         mBorderRadius = borderRadius;
-        invalidate();
+        Drawable drawable = getBackgroundDrawable();
+        setBackgroundDrawable(drawable);
     }
 
+    @Override
+    public void setBackgroundColor(int color) {
+        mBackgroundColor = color;
+        super.setBackgroundColor(color);
+        Drawable drawable = getBackgroundDrawable();
+        setBackgroundDrawable(drawable);
+    }
 }
